@@ -4,14 +4,14 @@ import { Redis } from '@upstash/redis'
 import MaxWidthWrapper from "./components/MaxWidthWrapper";
 import { StarIcon, PuzzlePieceIcon } from '@heroicons/react/24/solid'
 import TopicCreator from "./components/TopicCreator";
-// import {db} from "@/app/lib/redis"
+import {db} from "@/app/lib/redis"
 const redis = new Redis({
   url: 'https://current-slug-53612.upstash.io',
   token: 'AdFsAAIncDFiOGQwZmY2MjE5Yzk0YmMzYmFlYmViOTQ1NWEwMWNjZnAxNTM2MTI',
 })
 export default async function Home() {
-  const member = await redis.srandmember<string>("nextjs14")
-  // const servedRequests = await db.get("served-requests")
+  // const member = await redis.srandmember<string>("nextjs14")
+  const servedRequests = await db.get("served-requests")
   console.log(Number)
   return (
     <section className="min-h-screen bg-grid-zinc-50">
